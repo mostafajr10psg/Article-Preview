@@ -209,6 +209,7 @@ h1 {
 }
 
 .social-links span:first-of-type {
+  text-transform: uppercase;
   letter-spacing: 5px;
   color: var(--g-blue);
   font-size: 1.4rem;
@@ -218,7 +219,7 @@ h1 {
   text-decoration: none;
   color: white;
   width: 25px;
-  height: 24px;
+  height: 25px;
   border-radius: 3px;
   transition: var(--trans-duration);
 }
@@ -237,14 +238,16 @@ h1 {
   }
 }
 
-.social-links .arrow {
-  border-width: 15px;
-  border-style: solid;
-  border-color: var(--very-dark-g-blue) transparent transparent transparent;
-  position: absolute;
-  bottom: -28px;
-  right: 50%;
-  transform: translateX(50%);
+@media (min-width: 901px) {
+  .social-links .arrow {
+    border-width: 15px;
+    border-style: solid;
+    border-color: var(--very-dark-g-blue) transparent transparent transparent;
+    position: absolute;
+    bottom: -28px;
+    right: 50%;
+    transform: translateX(50%);
+  }
 }
 
 @media (min-width: 901px) and (max-width: 1050px) {

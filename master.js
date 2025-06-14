@@ -2,7 +2,6 @@ let content = document.querySelector(".content");
 let profileInfo = document.querySelector(".profile-info");
 let share = document.querySelector(".share");
 let socialLinks = document.querySelector(".social-links");
-let socialLinksArrow = document.querySelector(".arrow");
 
 let shareIcon = document.querySelector(".share-icon");
 function addColorsToShareIcon() {
@@ -23,21 +22,31 @@ function removeProperties(ele, ...properties) {
     ele.style.removeProperty(prop);
   });
 }
-
+// mobile
 if (matchMedia("(max-width: 900px)").matches) {
   content.after(socialLinks);
-  socialLinksArrow.remove();
-  document.addEventListener("touchstart", (e) => {
+  document.addEventListener("click", (e) => {
     if (e.target.classList.contains("share-icon")) {
+      profileInfo.style.display = "none";
       socialLinks.style.transform = "translateY(0)";
       socialLinks.style.height = "70px";
+      shareIcon.style.display = "none";
+      document.querySelector(".desc").style.marginBottom = "0";
       addColorsToShareIcon();
     } else {
-      removeProperties(socialLinks, "transform", "height");
-      reomveColorsFromShareIcon();
+      if (!e.target.closest(".social-links")) {
+        removeProperties(socialLinks, "transform", "height");
+        reomveColorsFromShareIcon();
+        removeProperty(profileInfo, "display");
+        removeProperty(shareIcon, "display");
+        removeProperty(document.querySelector(".desc"), "margin-bottom");
+        share.append(shareIcon);
+      }
     }
   });
-} else {
+}
+// monitor
+else {
   document.addEventListener("click", (e) => {
     if (e.target.classList.contains("share-icon")) {
       socialLinks.style.cssText = `bottom: 65px; opacity: 1; z-index: 10;`;
@@ -46,8 +55,10 @@ if (matchMedia("(max-width: 900px)").matches) {
         : "";
       addColorsToShareIcon();
     } else {
-      removeProperties(socialLinks, "opacity", "bottom", "z-index");
-      reomveColorsFromShareIcon();
+      if (!e.target.closest(".social-links")) {
+        removeProperties(socialLinks, "opacity", "bottom", "z-index");
+        reomveColorsFromShareIcon();
+      }
     }
   });
 }
