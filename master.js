@@ -25,7 +25,7 @@ function removeProperties(ele, ...properties) {
 // mobile
 if (matchMedia("(max-width: 900px)").matches) {
   content.after(socialLinks);
-  document.addEventListener("click", (e) => {
+  document.addEventListener("touchstart", (e) => {
     if (e.target.classList.contains("share-icon")) {
       profileInfo.style.display = "none";
       socialLinks.style.transform = "translateY(0)";
