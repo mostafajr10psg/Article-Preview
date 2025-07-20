@@ -237,7 +237,7 @@ h1 {
 
 .social-links span:first-of-type {
   text-transform: uppercase;
-  letter-spacing: 5px;
+  letter-spacing: 0.5rem;
   color: var(--g-blue);
   font-size: 1.4rem;
 }
